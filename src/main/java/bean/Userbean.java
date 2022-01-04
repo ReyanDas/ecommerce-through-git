@@ -18,11 +18,12 @@ public class Userbean {
 	
 	@Column(name ="email")
 	private String userEmail;
+
 	
 	@Column(name = "password")
 	private String password;
 	
-	@Column(length = 10,name ="phonenumber")
+	@Column(length = 10,name ="number")
 	private String userPhone;
 	
 	@Column(name ="picture")
