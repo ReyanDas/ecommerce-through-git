@@ -25,11 +25,13 @@ public class RegisterServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		
 		try {
 			
 			String userName = request.getParameter("userName");
 			String userEmail = request.getParameter("userEmail");
-			int userNumber = Integer.parseInt( request.getParameter("userNumber"));
+			String userNumber =  request.getParameter("userNumber");
 			String userPassword = request.getParameter("userPassword");
 			String userAddress = request.getParameter("userAddress");
 			
@@ -39,6 +41,14 @@ public class RegisterServlet extends HttpServlet {
 			System.out.println(userNumber);
 			System.out.println(userPassword);
 			System.out.println(userAddress);
+			
+			
+			System.out.println("hiii");
+			Userbean ub = new Userbean(userName,userEmail,userNumber,userPassword,null,userAddress);
+			
+			FactoryProvider.geFactory();
+//			System.out.println("user id is "+ id);
+			
 			
 			
 			

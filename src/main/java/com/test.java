@@ -15,7 +15,7 @@ public class test {
 		Userbean ub = new Userbean("Reyan Das","reyandas25@gmail.com","123456","8910632435",null,"kolkata");
 		
 		
-		 System.out.println(  FactoryProvider.geFactory(ub));
+//		 System.out.println(  FactoryProvider.geFactory(ub));
 		 
 		
 		 
