@@ -19,21 +19,15 @@ public class FactoryProvider {
 /*try {
 	System.out.println("factory "+factory+ " in method");
 			
-			if (factory==null) {
-				
+			if (factory==null) {			
 			factory=  new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
-
-			
 			}
-			
-			
-			
-		} catch (Exception e) {
+		} 
+			catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
 		}
-		
-		
+			
 		*/
 	
 	}
@@ -41,72 +35,49 @@ public class FactoryProvider {
 	
 
 	
-	public static int geFactory() {
-		
-		int id = 0;
+	public static SessionFactory geFactory() {
 
 	
 	try {		
 				if (factory==null) {
 					
 				factory=  new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+				Session session= factory.openSession();
 				
-				System.out.println(factory);
-				Session session = factory.openSession();
+			}
 				
-				session.isOpen();
-				Transaction tx = session.beginTransaction();
-				
-//				Userbean ub = new Userbean();
-				
-				
-//				id =(int) session.save(ub);
-				
-				tx.commit();
-				System.out.println("user saved successfully");
-				System.out.println(id);
-				session.close();
-//				ub = null;
-				
-
-				
-				}
-				
-				
-				
-			} catch (Exception e) {
+	} catch (Exception e) {
 				// TODO: handle exception
 				e.printStackTrace();
 			}
 		
-		return id;
+		return factory;
 	}
 	
 	
 	
-	
-	public static void saveUser(Userbean user) {
+	public static void geFactory(Userbean ub) {
+
 		
-	
+	try {		
+				if (factory==null) {
+					
+				factory=  new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+				Session session= factory.openSession();
+				Transaction tx = session.beginTransaction();
+				
+				session.save(ub);
+				tx.commit();
+				session.close();
+				
+			}
+				
+	} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}
 		
-		try {
-			
-			
-			
-		
-	
-		} catch (Exception e) {
-			System.out.println("error saving user in db");
-			e.printStackTrace();
-		
-		}
-		
-		
-		
-		
-		
-		
-		
+//		return factory;
 	}
 	
 	

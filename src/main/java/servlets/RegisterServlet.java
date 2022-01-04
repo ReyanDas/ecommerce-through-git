@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
 import bean.Userbean;
 import dao.FactoryProvider;
 
@@ -46,8 +49,15 @@ public class RegisterServlet extends HttpServlet {
 			System.out.println("hiii");
 			Userbean ub = new Userbean(userName,userEmail,userNumber,userPassword,null,userAddress);
 			
-			FactoryProvider.geFactory();
-//			System.out.println("user id is "+ id);
+			/*
+			Session session= FactoryProvider.geFactory().openSession();
+			Transaction tx = session.beginTransaction();
+			
+			int id = (int) session.save(ub);
+			
+			*/
+			FactoryProvider.geFactory(ub);
+			
 			
 			
 			
