@@ -17,7 +17,7 @@ public class FactoryProvider {
 	public FactoryProvider() {
 		
 try {
-	System.out.println(factory);
+	System.out.println("factory "+factory+ " in method");
 			
 			if (factory==null) {
 				
@@ -40,27 +40,32 @@ try {
 	
 
 	
-	public static SessionFactory geFactory() {
+	public static SessionFactory geFactory( Userbean ub) {
 
 	
 	try {
-		System.out.println(factory);
+		System.out.println("in try block");
+		System.out.println("factory "+factory+ " in method");
 				
 				if (factory==null) {
+					System.out.println("in if block");
 					
 				factory=  new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+				System.out.println(factory);
 				
 				System.out.println("try block");
 				System.out.println(factory);
 				
 				Session session = factory.openSession();
 				Transaction tx = session.beginTransaction();
-				Userbean ub = new Userbean();
+//				Userbean ub = new Userbean();
+				
 				
 				int id =(int) session.save(ub);
 				tx.commit();
 				System.out.println(id);
 				session.close();
+				ub = null;
 				
 
 				

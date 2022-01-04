@@ -43,14 +43,6 @@ public class RegisterServlet extends HttpServlet {
 			
 			
 			
-			Userbean ub = new Userbean(userName, userEmail,userNumber,null,userAddress);
-			FactoryProvider.saveUser(ub);
-			//System.out.println(userid);
-			
-			
-			
-			
-			
 		} catch (Exception e) {
 			
 			e.printStackTrace();

@@ -13,19 +13,22 @@ public class Userbean {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int userId;
 	
-	@Column(name ="user_name")
+	@Column(name ="name")
 	private String userName;
 	
 	@Column(name ="email")
 	private String userEmail;
 	
-	@Column(length = 10,name ="phonenumber")
-	private int userPhone;
+	@Column(name = "password")
+	private String password;
 	
-	@Column(name ="user_picture")
+	@Column(length = 10,name ="phonenumber")
+	private String userPhone;
+	
+	@Column(name ="picture")
 	private String userPicture;
 	
-	@Column(length = 1500,name = "user_address")
+	@Column(length = 1500,name = "address")
 	private String userAddress;
 	
 	
@@ -35,22 +38,28 @@ public class Userbean {
 		super();
 	}
 
-	public Userbean(int userId, String userName, String userEmail, int userPhone, String userPicture,
+	
+
+	public Userbean(int userId, String userName, String userEmail, String password, String userPhone, String userPicture,
 			String userAddress) {
 		super();
 		this.userId = userId;
 		this.userName = userName;
 		this.userEmail = userEmail;
+		this.password = password;
 		this.userPhone = userPhone;
 		this.userPicture = userPicture;
 		this.userAddress = userAddress;
 	}
 
-	public Userbean(String userName, String userEmail, int i, String userPicture, String userAddress) {
+
+
+	public Userbean(String userName, String userEmail,String password ,String userphone,String userPicture, String userAddress) {
 		super();
 		this.userName = userName;
 		this.userEmail = userEmail;
-		this.userPhone = i;
+		this.password = password;
+		this.userPhone = userphone;
 		this.userPicture = userPicture;
 		this.userAddress = userAddress;
 	}
@@ -78,12 +87,26 @@ public class Userbean {
 	public void setUserEmail(String userEmail) {
 		this.userEmail = userEmail;
 	}
+	
+	
 
-	public int getUserPhone() {
+	public String getPassword() {
+		return password;
+	}
+
+
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+
+
+	public String getUserPhone() {
 		return userPhone;
 	}
 
-	public void setUserPhone(int userPhone) {
+	public void setUserPhone(String userPhone) {
 		this.userPhone = userPhone;
 	}
 
@@ -103,11 +126,16 @@ public class Userbean {
 		this.userAddress = userAddress;
 	}
 
+
+
 	@Override
 	public String toString() {
-		return "Userbean [userId=" + userId + ", userName=" + userName + ", userEmail=" + userEmail + ", userPhone="
-				+ userPhone + ", userPicture=" + userPicture + ", userAddress=" + userAddress + "]";
+		return "Userbean [userId=" + userId + ", userName=" + userName + ", userEmail=" + userEmail + ", password="
+				+ password + ", userPhone=" + userPhone + ", userPicture=" + userPicture + ", userAddress="
+				+ userAddress + "]";
 	}
+
+	
 	
 	
 	
