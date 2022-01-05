@@ -35,7 +35,7 @@ public class FactoryProvider {
 	
 
 	
-	public static SessionFactory geFactory() {
+	public  SessionFactory geFactory() {
 
 	
 	try {		
@@ -56,7 +56,7 @@ public class FactoryProvider {
 	
 	
 	
-	public static void geFactory(Userbean ub) {
+	public void geFactory(Userbean ub) {
 
 		
 	try {		

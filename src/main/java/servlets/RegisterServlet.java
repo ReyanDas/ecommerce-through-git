@@ -14,7 +14,7 @@ import bean.Userbean;
 import dao.FactoryProvider;
 
 
-@WebServlet("/RegisterServlet")
+//  @WebServlet("/RegisterServlet")
 public class RegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -56,7 +56,9 @@ public class RegisterServlet extends HttpServlet {
 			int id = (int) session.save(ub);
 			
 			*/
-			FactoryProvider.geFactory(ub);
+			FactoryProvider factory= new FactoryProvider();
+			
+			factory.geFactory(ub);
 			
 			
 			
