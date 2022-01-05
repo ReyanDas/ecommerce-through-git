@@ -7,11 +7,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
 import bean.Userbean;
 import dao.FactoryProvider;
 
 
-@WebServlet("/RegisterServlet")
+//  @WebServlet("/RegisterServlet")
 public class RegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -25,11 +28,13 @@ public class RegisterServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		
 		try {
 			
 			String userName = request.getParameter("userName");
 			String userEmail = request.getParameter("userEmail");
-			int userNumber = Integer.parseInt( request.getParameter("userNumber"));
+			String userNumber =  request.getParameter("userNumber");
 			String userPassword = request.getParameter("userPassword");
 			String userAddress = request.getParameter("userAddress");
 			
@@ -39,6 +44,23 @@ public class RegisterServlet extends HttpServlet {
 			System.out.println(userNumber);
 			System.out.println(userPassword);
 			System.out.println(userAddress);
+			
+			
+			System.out.println("hiii");
+			Userbean ub = new Userbean(userName,userEmail,userNumber,userPassword,null,userAddress);
+			
+			/*
+			Session session= FactoryProvider.geFactory().openSession();
+			Transaction tx = session.beginTransaction();
+			
+			int id = (int) session.save(ub);
+			
+			*/
+			FactoryProvider factory= new FactoryProvider();
+			
+			factory.geFactory(ub);
+			
+			
 			
 			
 			
