@@ -56,9 +56,15 @@ public class RegisterServlet extends HttpServlet {
 			int id = (int) session.save(ub);
 			
 			*/
-			FactoryProvider factory= new FactoryProvider();
+			FactoryProvider fc = new FactoryProvider();
+			System.out.println(fc);
 			
-			factory.geFactory(ub);
+			fc.geFactory();
+			FactoryProvider.registerUser(ub);
+		
+			
+			
+			
 			
 			
 			

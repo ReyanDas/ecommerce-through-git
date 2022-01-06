@@ -14,27 +14,16 @@ public class FactoryProvider {
 	
 	private static SessionFactory factory;
 	
+	
 	public FactoryProvider() {
 		
-/*try {
-	System.out.println("factory "+factory+ " in method");
-			
-			if (factory==null) {			
-			factory=  new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
-			}
-		} 
-			catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
-			
-		*/
+
 	
 	}
 	
 	
 
-	
+	// method to get SessionFactory--------------
 	public  SessionFactory geFactory() {
 
 	
@@ -42,12 +31,11 @@ public class FactoryProvider {
 				if (factory==null) {
 					
 				factory=  new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
-				Session session= factory.openSession();
+				
 				
 			}
 				
 	} catch (Exception e) {
-				// TODO: handle exception
 				e.printStackTrace();
 			}
 		
@@ -55,8 +43,8 @@ public class FactoryProvider {
 	}
 	
 	
-	
-	public void geFactory(Userbean ub) {
+	// ----------------- method for save user----------------------
+	public  static void registerUser(Userbean ub) {
 
 		
 	try {		
@@ -66,18 +54,20 @@ public class FactoryProvider {
 				Session session= factory.openSession();
 				Transaction tx = session.beginTransaction();
 				
-				session.save(ub);
+				int id =(int) session.save(ub);
 				tx.commit();
+				System.out.println("FactoryProvider user id- "+id);
 				session.close();
 				
 			}
 				
 	} catch (Exception e) {
-				// TODO: handle exception
+		
+		
 				e.printStackTrace();
 			}
 		
-//		return factory;
+
 	}
 	
 	
