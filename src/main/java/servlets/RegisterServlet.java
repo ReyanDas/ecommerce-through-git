@@ -2,7 +2,7 @@ package servlets;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
+//import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,17 +11,42 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import bean.Userbean;
+// import dao.ConnectionProvider;
 import dao.FactoryProvider;
 
 
 //  @WebServlet("/RegisterServlet")
 public class RegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	
+	private Session session = null;
+	private Transaction tx = null;
        
    
     public RegisterServlet() {
         super();
         // TODO Auto-generated constructor stub
+    }
+    
+    
+    
+    
+    @Override
+    public void init() throws ServletException {
+    	// TODO Auto-generated method stub
+    	
+    	
+    	
+    	super.init();
+    	
+    	//
+		 session= FactoryProvider.geFactory().openSession();
+		 System.out.println(session.isOpen());
+		 System.out.println(session);
+		System.out.println("got sesssion object");
+		
+		 tx = session.beginTransaction();
     }
 
 	/**
@@ -39,38 +64,26 @@ public class RegisterServlet extends HttpServlet {
 			String userAddress = request.getParameter("userAddress");
 			
 			
-			System.out.println(userName);
-			System.out.println(userEmail);
-			System.out.println(userNumber);
-			System.out.println(userPassword);
-			System.out.println(userAddress);
+			Userbean ub = new Userbean(userName,userEmail,userNumber,userPassword,null,userAddress,"normal");
+			System.out.println("user bean created");
+			 
 			
 			
-			System.out.println("hiii");
-			Userbean ub = new Userbean(userName,userEmail,userNumber,userPassword,null,userAddress);
+			//System.out.println( ConnectionProvider.getConnection());
 			
-			/*
-			Session session= FactoryProvider.geFactory().openSession();
-			Transaction tx = session.beginTransaction();
 			
-			int id = (int) session.save(ub);
+			int id =(int) session.save(ub);
+			tx.commit();
+			System.out.println("user saved..., id-"+id);
 			
-			*/
-			FactoryProvider fc = new FactoryProvider();
-			System.out.println(fc);
-			
-			fc.geFactory();
-			FactoryProvider.registerUser(ub);
+			session.close();
+			System.out.println(session.isOpen());
 		
+//			FactoryProvider.registerUser(ub);
 			
 			
-			
-			
-			
-			
-			
-			
-			
+			System.out.println("Hello");
+			ub = null;
 		} catch (Exception e) {
 			
 			e.printStackTrace();

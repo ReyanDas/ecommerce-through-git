@@ -17,18 +17,27 @@ public class FactoryProvider {
 	
 	public FactoryProvider() {
 		
+		try {
+			
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		
 
 	
 	}
 	
 	
 
-	// method to get SessionFactory--------------
-	public  SessionFactory geFactory() {
+	// --------------method to get SessionFactory--------------
+	public  static SessionFactory geFactory() {
 
 	
 	try {		
 				if (factory==null) {
+					Class.forName("com.mysql.cj.jdbc.Driver");
 					
 				factory=  new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 				
@@ -49,6 +58,7 @@ public class FactoryProvider {
 		
 	try {		
 				if (factory==null) {
+					Class.forName("com.mysql.cj.jdbc.Driver");
 					
 				factory=  new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 				Session session= factory.openSession();
@@ -56,7 +66,7 @@ public class FactoryProvider {
 				
 				int id =(int) session.save(ub);
 				tx.commit();
-				System.out.println("FactoryProvider user id- "+id);
+				System.out.println("user saved successfully..., id-"+id);
 				session.close();
 				
 			}

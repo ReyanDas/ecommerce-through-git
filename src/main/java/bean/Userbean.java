@@ -33,6 +33,10 @@ public class Userbean {
 	private String userAddress;
 	
 	
+	@Column(name = "usertype")
+	private String userType;
+	
+	
 	
 
 	public Userbean() {
@@ -55,7 +59,7 @@ public class Userbean {
 
 
 
-	public Userbean(String userName, String userEmail ,String userphone,String password,String userPicture, String userAddress) {
+	public Userbean(String userName, String userEmail ,String userphone,String password,String userPicture, String userAddress, String userType) {
 		super();
 		this.userName = userName;
 		this.userEmail = userEmail;
@@ -63,6 +67,7 @@ public class Userbean {
 		this.userPhone = userphone;
 		this.userPicture = userPicture;
 		this.userAddress = userAddress;
+		this.userType = userType;
 	}
 
 	public int getUserId() {
@@ -127,16 +132,28 @@ public class Userbean {
 		this.userAddress = userAddress;
 	}
 
+	public String getUserType() {
+		return userType;
+	}
+
+
+
+	public void setUserType(String userType) {
+		this.userType = userType;
+	}
+
 
 
 	@Override
 	public String toString() {
 		return "Userbean [userId=" + userId + ", userName=" + userName + ", userEmail=" + userEmail + ", password="
 				+ password + ", userPhone=" + userPhone + ", userPicture=" + userPicture + ", userAddress="
-				+ userAddress + "]";
+				+ userAddress + ", userType=" + userType + "]";
 	}
-
 	
+	
+
+
 	
 	
 	
