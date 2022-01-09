@@ -16,6 +16,9 @@
 <div class = "col-md-4 offset-md-4">
 
 <div class = "card">
+
+<%@include file = "components/message.jsp" %>
+<%@include file = "components/message1.jsp" %>
 <div class = "card-body px-5">
 <center>
 <img  src="https://img.icons8.com/color/48/000000/edit-user-male--v1.png"/">

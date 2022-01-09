@@ -2,8 +2,7 @@ package test;
 
 
 
-import bean.Userbean;
-import dao.FactoryProvider;
+
 
 public class test {
 
