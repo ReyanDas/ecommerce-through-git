@@ -14,40 +14,37 @@ public class FactoryProvider {
 	
 	private static SessionFactory factory;
 	
+	
 	public FactoryProvider() {
 		
-/*try {
-	System.out.println("factory "+factory+ " in method");
+		try {
 			
-			if (factory==null) {			
-			factory=  new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
-			}
-		} 
-			catch (Exception e) {
+			
+		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
 		}
-			
-		*/
+		
+
 	
 	}
 	
 	
 
-	
-	public  SessionFactory geFactory() {
+	// --------------method to get SessionFactory--------------
+	public  static SessionFactory geFactory() {
 
 	
 	try {		
 				if (factory==null) {
+					Class.forName("com.mysql.cj.jdbc.Driver");
 					
 				factory=  new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
-				Session session= factory.openSession();
+				
 				
 			}
 				
 	} catch (Exception e) {
-				// TODO: handle exception
 				e.printStackTrace();
 			}
 		
@@ -55,29 +52,32 @@ public class FactoryProvider {
 	}
 	
 	
-	
-	public void geFactory(Userbean ub) {
+	// ----------------- method for save user----------------------
+	public  static void registerUser(Userbean ub) {
 
 		
 	try {		
 				if (factory==null) {
+					Class.forName("com.mysql.cj.jdbc.Driver");
 					
 				factory=  new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 				Session session= factory.openSession();
 				Transaction tx = session.beginTransaction();
 				
-				session.save(ub);
+				int id =(int) session.save(ub);
 				tx.commit();
+				System.out.println("user saved successfully..., id-"+id);
 				session.close();
 				
 			}
 				
 	} catch (Exception e) {
-				// TODO: handle exception
+		
+		
 				e.printStackTrace();
 			}
 		
-//		return factory;
+
 	}
 	
 	
