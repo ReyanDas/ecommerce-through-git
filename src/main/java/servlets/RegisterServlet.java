@@ -27,16 +27,14 @@ public class RegisterServlet extends HttpServlet {
 
 	public RegisterServlet() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public void init() throws ServletException {
-		// TODO Auto-generated method stub
 
 		super.init();
 
-		//
+		
 		session = FactoryProvider.geFactory().openSession();
 		System.out.println(session.isOpen());
 		System.out.println(session);
@@ -51,28 +49,20 @@ public class RegisterServlet extends HttpServlet {
 	public boolean isUserExist(Userbean ub) {
 		boolean status = true;
 		String email = ub.getUserEmail();
-		System.out.println("email get from clint "+  email);
-
-//    	session.beginTransaction();
-//    	Userbean user=(Userbean)session.createQuery("from bean.Userbean where name = '"+name+"'").uniqueResult();
-//    	session.getTransaction().commit();
-//    	System.out.println( user.getUserEmail());
-
+		System.out.println("email get from clint " + email);
 		List<String> allemails = (List<String>) session.createQuery("select u.userEmail from bean.Userbean u").list();
 		for (String emails : allemails) {
-			
-			System.out.println("email matched "+emails);
-			
-			if(emails.equals(email)) {
+
+			System.out.println("email matched " + emails);
+
+			if (emails.equals(email)) {
 				status = false;
-				
+
 			}
-			
-			
+
 		}
 		return status;
 
-		
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -92,13 +82,13 @@ public class RegisterServlet extends HttpServlet {
 
 //			checking if email already exists or not 
 			if (isUserExist(ub)) {
-				
+
 //if not saving the user
 				int id = (int) session.save(ub);
 				tx.commit();
 				System.out.println("user saving.......");
 				HttpSession httpSession = request.getSession();
-				httpSession.setAttribute("massege", "Registration successful. Please Login.. ID- " +id);
+				httpSession.setAttribute("massege", "Registration successful. Please Login.. ID- " + id);
 				response.sendRedirect("signup.jsp");
 
 			} else {
