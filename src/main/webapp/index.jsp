@@ -5,6 +5,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Home</title>
+<link rel="stylesheet" href="css/style2.css">
 
 
 <%@include file ="components/common_css_js.jsp" %>
@@ -12,7 +13,10 @@
 
 <body>
 <%@include file = "components/Navbar.jsp" %>
-Home page
+
+  <h1>Home page</h1>
+
+
 
 
 

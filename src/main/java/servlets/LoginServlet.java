@@ -6,35 +6,64 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class LoginServlet
- */
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
+import bean.Userbean;
+import dao.FactoryProvider;
+import dao.UserDao;
+
 
 //@WebServleturlPatterns = { "/LoginServlet" }
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+	
+	
+	private Session session = null;
+	private Transaction tx = null;
+    
     public LoginServlet() {
         super();
-        // TODO Auto-generated constructor stub
-    }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at LoginServlet");
+    }
+    
+    
+
+	
+	@Override
+	public void init() throws ServletException {
+		
+		super.init();
+		
+		session = FactoryProvider.geFactory().openSession();
+		System.out.println(session.isOpen());
+		System.out.println(session);
+		System.out.println("got sesssion object");
+
+		tx = session.beginTransaction();
+		
+		
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+
+
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.getWriter().append("Served at LoginServlet");
+		
+		String username = request.getParameter("usename");
+		String password = request.getParameter("password");
+		
+		
+		UserDao userdao = new UserDao(session);
+		Userbean ub = userdao.authenticateLogin(username,password);
+		ub.toString();
+		
+		
+	}
+
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 
