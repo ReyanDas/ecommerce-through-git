@@ -7,7 +7,7 @@
 	
 	%>
 	
-	<div class="alert alert-success" role="alert">
+	<div  align="center" class="alert alert-success" role="alert" >
   <%= msg %>
 </div>
 <%

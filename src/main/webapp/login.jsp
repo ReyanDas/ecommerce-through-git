@@ -9,6 +9,7 @@
   <body>
    <div class="center">
      <h1>Login</h1>
+     <%@include file = "components/message1.jsp" %>
     
      <Form action="LoginServlet" method="post">
      <div class="txt_field">

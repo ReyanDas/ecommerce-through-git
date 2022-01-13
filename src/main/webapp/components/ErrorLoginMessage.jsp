@@ -1,5 +1,5 @@
 <%
-   String errormsg =(String) session.getAttribute("errormassege");
+   String errormsg =(String) session.getAttribute("ErrorLoginMsg");
 
   if(errormsg!=null){
 	//out.print(msg);
