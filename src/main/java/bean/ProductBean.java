@@ -96,6 +96,18 @@ public class ProductBean {
 	public void setProductQuantity(int productQuantity) {
 		this.productQuantity = productQuantity;
 	}
+	
+	
+	public CatagoryBean getCatagory() {
+		return catagory;
+	}
+
+
+	public void setCatagory(CatagoryBean catagory) {
+		this.catagory = catagory;
+	}
+
+
 	@Override
 	public String toString() {
 		return "ProductBean [productId=" + productId + ", productName=" + productName + ", productDescription="

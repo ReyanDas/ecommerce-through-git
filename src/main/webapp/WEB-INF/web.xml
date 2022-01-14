@@ -28,5 +28,16 @@ http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" version="4.0">
   </servlet-mapping>
   
   
+   <servlet>
+    <servlet-name>ProductOperationsServlet</servlet-name>
+    <servlet-class>servlets.ProductOperationsServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>ProductOperationsServlet</servlet-name>
+    <url-pattern>/ProductOperationsServlet</url-pattern>
+  </servlet-mapping>
+  
+  
   
 </web-app>

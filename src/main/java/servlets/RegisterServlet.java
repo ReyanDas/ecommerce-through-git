@@ -34,7 +34,6 @@ public class RegisterServlet extends HttpServlet {
 
 		super.init();
 
-		
 		session = FactoryProvider.geFactory().openSession();
 		System.out.println(session.isOpen());
 		System.out.println(session);
@@ -83,7 +82,7 @@ public class RegisterServlet extends HttpServlet {
 //			checking if email already exists or not 
 			if (isUserExist(ub)) {
 
-//if not saving the user
+//           if not saving the user
 				int id = (int) session.save(ub);
 				tx.commit();
 				System.out.println("user saving.......");
