@@ -54,6 +54,8 @@ public class LoginServlet extends HttpServlet {
 			if (ub.getUserEmail().equalsIgnoreCase(username) && ub.getPassword().equals(password)) {
 
 				System.out.println("Login successful");
+				HttpSession session = request.getSession();
+				session.setAttribute("currentLoggedUser", ub);
 				response.sendRedirect("index.jsp");
 
 			} else {

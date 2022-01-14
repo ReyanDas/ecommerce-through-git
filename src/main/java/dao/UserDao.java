@@ -3,7 +3,6 @@ package dao;
 import javax.persistence.Query;
 
 import org.hibernate.Session;
-import org.hibernate.internal.build.AllowSysOut;
 
 import bean.Userbean;
 
