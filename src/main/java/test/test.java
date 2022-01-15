@@ -1,8 +1,6 @@
 package test;
 
-
-
-
+import dao.CatagoryDAO;
 
 public class test {
 
@@ -21,6 +19,7 @@ public class test {
 		
 		 
 		
+		CatagoryDAO category = new CatagoryDAO();
 		
 		
 		

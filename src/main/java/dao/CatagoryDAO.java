@@ -3,7 +3,7 @@ package dao;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import bean.CatagoryBean;
+import bean.CategoryBean;
 
 public class CatagoryDAO {
 
@@ -26,7 +26,7 @@ public class CatagoryDAO {
 		}
 	}
 
-	public int saveCatagory(CatagoryBean catagory) {
+	public int saveCatagory(CategoryBean catagory) {
 		int catagoryID = 0;
 
 		try {
@@ -41,13 +41,13 @@ public class CatagoryDAO {
 		return catagoryID;
 	}
 
-	public static CatagoryBean getCatagotyByID(int catagoryID) {
+	public static CategoryBean getCatagotyByID(int catagoryID) {
 
-		CatagoryBean catagory = null;
+		CategoryBean catagory = null;
 
 		try {
 
-			catagory = session.get(CatagoryBean.class, catagoryID);
+			catagory = session.get(CategoryBean.class, catagoryID);
 
 		} catch (Exception e) {
 			// TODO: handle exception

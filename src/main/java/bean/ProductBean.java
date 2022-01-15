@@ -7,36 +7,28 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-
-
 @Entity(name = "products")
 public class ProductBean {
 	@Id
-	@GeneratedValue(strategy =GenerationType.IDENTITY )
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int productId;
 	private String productName;
-	
-	@Column(length=3000)
+
+	@Column(length = 3000)
 	private String productDescription;
 	private String producPhoto;
 	private int productPrice;
 	private int productQuantity;
-	
-	@ManyToOne
-	private CatagoryBean catagory;
-	
-	
-	
 
-	
-	
+	@ManyToOne
+	private CategoryBean catagory;
+
 	public ProductBean() {
 		super();
 	}
 
-
 	public ProductBean(int productId, String productName, String productDescription, String producPhoto,
-			int productPrice, int productQuantity, CatagoryBean catagory) {
+			int productPrice, int productQuantity, CategoryBean catagory) {
 		super();
 		this.productId = productId;
 		this.productName = productName;
@@ -47,9 +39,8 @@ public class ProductBean {
 		this.catagory = catagory;
 	}
 
-	
 	public ProductBean(String productName, String productDescription, String producPhoto, int productPrice,
-			int productQuantity, CatagoryBean catagory) {
+			int productQuantity, CategoryBean catagory) {
 		super();
 		this.productName = productName;
 		this.productDescription = productDescription;
@@ -58,55 +49,62 @@ public class ProductBean {
 		this.productQuantity = productQuantity;
 		this.catagory = catagory;
 	}
-
 
 	public int getProductId() {
 		return productId;
 	}
+
 	public void setProductId(int productId) {
 		this.productId = productId;
 	}
+
 	public String getProductName() {
 		return productName;
 	}
+
 	public void setProductName(String productName) {
 		this.productName = productName;
 	}
+
 	public String getProductDescription() {
 		return productDescription;
 	}
+
 	public void setProductDescription(String productDescription) {
 		this.productDescription = productDescription;
 	}
+
 	public String getProducPhoto() {
 		return producPhoto;
 	}
+
 	public void setProducPhoto(String producPhoto) {
 		this.producPhoto = producPhoto;
 	}
+
 	public int getProductPrice() {
 		return productPrice;
 	}
+
 	public void setProductPrice(int productPrice) {
 		this.productPrice = productPrice;
 	}
+
 	public int getProductQuantity() {
 		return productQuantity;
 	}
+
 	public void setProductQuantity(int productQuantity) {
 		this.productQuantity = productQuantity;
 	}
-	
-	
-	public CatagoryBean getCatagory() {
+
+	public CategoryBean getCatagory() {
 		return catagory;
 	}
 
-
-	public void setCatagory(CatagoryBean catagory) {
+	public void setCatagory(CategoryBean catagory) {
 		this.catagory = catagory;
 	}
-
 
 	@Override
 	public String toString() {
@@ -114,7 +112,5 @@ public class ProductBean {
 				+ productDescription + ", producPhoto=" + producPhoto + ", productPrice=" + productPrice
 				+ ", productQuantity=" + productQuantity + "]";
 	}
-	
-	
 
 }

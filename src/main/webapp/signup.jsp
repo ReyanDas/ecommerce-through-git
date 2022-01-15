@@ -39,7 +39,7 @@
 			</div>
 			<input type="submit" value="Signup">
 			<div class="link">
-				Already a member? <a href="login.html">Login</a>
+				Already a member? <a href="login.jsp">Login</a>
 			</div>
 		</form>
 	</div>

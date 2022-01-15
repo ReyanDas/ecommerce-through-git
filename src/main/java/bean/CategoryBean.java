@@ -9,13 +9,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-@Entity(name = "catagories")
-public class CatagoryBean {
+@Entity(name = "categories")
+public class CategoryBean {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int catagotyId;
-	private String catagoryTitle;
-	private String catagoryDescription;
+	private int categoryId;
+	private String categoryTitle;
+	private String categoryDescription;
 	
 	@OneToMany(mappedBy = "catagory")
 	private List<ProductBean> products = new ArrayList<ProductBean>();
@@ -26,53 +26,53 @@ public class CatagoryBean {
 	
 	
 	
-	public CatagoryBean() {
+	public CategoryBean() {
 		super();
 	}
 
 
 
-	public CatagoryBean(int catagotyId, String catagoryTitle, String catagoryDescription, List<ProductBean> products) {
+	public CategoryBean(int catagotyId, String catagoryTitle, String catagoryDescription, List<ProductBean> products) {
 		super();
-		this.catagotyId = catagotyId;
-		this.catagoryTitle = catagoryTitle;
-		this.catagoryDescription = catagoryDescription;
+		this.categoryId = catagotyId;
+		this.categoryTitle = catagoryTitle;
+		this.categoryDescription = catagoryDescription;
 		this.products = products;
 	}
 	
 
 	
-	public CatagoryBean(String catagoryTitle, String catagoryDescription, List<ProductBean> products) {
+	public CategoryBean(String catagoryTitle, String catagoryDescription, List<ProductBean> products) {
 		super();
-		this.catagoryTitle = catagoryTitle;
-		this.catagoryDescription = catagoryDescription;
+		this.categoryTitle = catagoryTitle;
+		this.categoryDescription = catagoryDescription;
 		this.products = products;
 	}
 	
 
 
 	public int getCatagotyId() {
-		return catagotyId;
+		return categoryId;
 	}
 
 	public void setCatagotyId(int catagotyId) {
-		this.catagotyId = catagotyId;
+		this.categoryId = catagotyId;
 	}
 
 	public String getCatagoryTitle() {
-		return catagoryTitle;
+		return categoryTitle;
 	}
 
 	public void setCatagoryTitle(String catagoryTitle) {
-		this.catagoryTitle = catagoryTitle;
+		this.categoryTitle = catagoryTitle;
 	}
 
 	public String getCatagoryDescription() {
-		return catagoryDescription;
+		return categoryDescription;
 	}
 
 	public void setCatagoryDescription(String catagoryDescription) {
-		this.catagoryDescription = catagoryDescription;
+		this.categoryDescription = catagoryDescription;
 	}
 	
 	
@@ -92,8 +92,8 @@ public class CatagoryBean {
 
 	@Override
 	public String toString() {
-		return "CatagoryBean [catagotyId=" + catagotyId + ", catagoryTitle=" + catagoryTitle + ", catagoryDescription="
-				+ catagoryDescription + "]";
+		return "CatagoryBean [catagotyId=" + categoryId + ", catagoryTitle=" + categoryTitle + ", catagoryDescription="
+				+ categoryDescription + "]";
 	}
 	
 	

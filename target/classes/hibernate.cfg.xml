@@ -15,7 +15,7 @@
 
 <mapping class= "bean.Userbean"/>
 <mapping class= "bean.ProductBean"/>
-<mapping class= "bean.CatagoryBean"/>
+<mapping class= "bean.CategoryBean"/>
 
 
 </session-factory>
